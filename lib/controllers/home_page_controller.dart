@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:pokemon/models/page_data.dart';
+import 'package:pokemon/models/pokemon.dart';
 import 'package:pokemon/services/http_service.dart';
 
 class HomePageController extends StateNotifier<HomePageData> {
@@ -23,6 +24,10 @@ class HomePageController extends StateNotifier<HomePageData> {
       Response? res = await _httpService.get(
         "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0 ",
       );
+      if (res != null && res.data != null) {
+        PokemonListData data = PokemonListData.fromJson(res.data);
+        state = state.copyWith(data: data);
+      }
       print(res!.data);
     } else {}
   }
