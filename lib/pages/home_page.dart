@@ -5,20 +5,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokemon/controllers/home_page_controller.dart';
 import 'package:pokemon/models/page_data.dart';
 
-final HomePageControllerProvider = StateNotifierProvider((ref) {
-  return HomePageController(HomePageData.initial());
-});
+final homePageControllerProvider =
+    StateNotifierProvider<HomePageController, HomePageData>((ref) {
+      return HomePageController(HomePageData.initial());
+    });
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
+  late HomePageController _homePageController;
+  late HomePageData _homePageData;
+
   @override
   Widget build(BuildContext context) {
+    _homePageController = ref.watch(homePageControllerProvider.notifier);
+    _homePageData = ref.watch(homePageControllerProvider);
     return Scaffold(body: _buildUI(context));
   }
 
