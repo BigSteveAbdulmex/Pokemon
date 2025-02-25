@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PokemonListTile extends StatelessWidget {
   final String pokemonURL;
 
-  PokemonListTile({required this.pokemonURL});
+  const PokemonListTile({super.key, required this.pokemonURL});
 
   @override
   Widget build(BuildContext context) {
