@@ -59,7 +59,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             child: ListView.builder(
               itemCount: _homePageData.data?.results?.length ?? 0,
               itemBuilder: (context, index) {
-                return const ListTile();
+                return ListTile(title: Text(index.toString()));
               },
             ),
           ),
