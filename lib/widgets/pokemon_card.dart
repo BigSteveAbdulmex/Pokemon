@@ -80,6 +80,17 @@ class PokemonCard extends ConsumerWidget {
                 radius: MediaQuery.sizeOf(context).height * 0.05,
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${pokemon?.moves?.length} Moves",
+                  style: TextStyle(color: Colors.white),
+                ),
+                const Icon(Icons.favorite, color: Colors.red),
+              ],
+            ),
           ],
         ),
       ),
