@@ -9,10 +9,16 @@ import 'package:pokemon/models/pokemon.dart';
 class PokemonListTile extends ConsumerWidget {
   final String pokemonURL;
 
-  const PokemonListTile({super.key, required this.pokemonURL});
+  late FavoritePokemonProvider _favoritePokemonProvider;
+  late List<String> _favoritePokemons;
+
+  PokemonListTile({super.key, required this.pokemonURL});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _favoritePokemonProvider = ref.watch(favoritePokemonProvider.notifier);
+    _favoritePokemons = ref.watch(favoritePokemonProvider);
+
     final pokemon = ref.watch(pokemonDataProvider(pokemonURL));
     return pokemon.when(
       data: (data) {
