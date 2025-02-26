@@ -71,6 +71,15 @@ class PokemonCard extends ConsumerWidget {
                 ),
               ],
             ),
+            Expanded(
+              child: CircleAvatar(
+                backgroundImage:
+                    pokemon != null
+                        ? NetworkImage(pokemon.sprites!.frontDefault!)
+                        : null,
+                radius: MediaQuery.sizeOf(context).height * 0.05,
+              ),
+            ),
           ],
         ),
       ),
