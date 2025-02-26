@@ -55,4 +55,9 @@ This Flutter application is a practice project that displays a list of Pokemon, 
     flutter run
     ```
 
-## Project Structure
+## Screenshots
+
+Here are some screenshots of the app:
+
+![Pokemon List](assets/app_screenshots_readme/Screenshot%20from%202025-02-26%2023-56-53.pngimages/pokemon_list.png)
+![Pokemon Details](assets/app_screenshots_readme/Screenshot%20from%202025-02-26%2023-56-53.pngimages/pokemon_details.png)
