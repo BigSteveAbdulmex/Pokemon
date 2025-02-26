@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokemon/controllers/home_page_controller.dart';
 import 'package:pokemon/models/page_data.dart';
 import 'package:pokemon/models/pokemon.dart';
+import 'package:pokemon/providers/pokemon_data_providers.dart';
 import 'package:pokemon/widgets/pokemon_list_tile.dart';
 
 final homePageControllerProvider =
@@ -24,6 +25,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   late HomePageController _homePageController;
   late HomePageData _homePageData;
+
+  late List<String> _favoritePokemons;
 
   @override
   void initState() {
@@ -50,6 +53,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     _homePageController = ref.watch(homePageControllerProvider.notifier);
     _homePageData = ref.watch(homePageControllerProvider);
+    _favoritePokemons = ref.watch(favoritePokemonProvider);
     return Scaffold(body: _buildUI(context));
   }
 
@@ -64,9 +68,35 @@ class _HomePageState extends ConsumerState<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [_allPokemonsList(context)],
+            children: [
+              _favoritePokemonsList(context),
+              _allPokemonsList(context),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _favoritePokemonsList(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Favorites', style: TextStyle(fontSize: 25)),
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.50,
+            width: MediaQuery.sizeOf(context).width,
+            child: Column(
+              children: [
+                if (_favoritePokemons.isEmpty)
+                  Text("No favorites pokemons yet :("),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
