@@ -91,6 +91,19 @@ class _HomePageState extends ConsumerState<HomePage> {
             width: MediaQuery.sizeOf(context).width,
             child: Column(
               children: [
+                if (_favoritePokemons.isNotEmpty)
+                  SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.48,
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                          ),
+                      itemBuilder: (context, index) {
+                        return Container();
+                      },
+                    ),
+                  ),
                 if (_favoritePokemons.isEmpty)
                   Text("No favorites pokemons yet :("),
               ],
