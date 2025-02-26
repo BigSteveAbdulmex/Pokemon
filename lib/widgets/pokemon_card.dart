@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:pokemon/models/pokemon.dart';
 import 'package:pokemon/providers/pokemon_data_providers.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class PokemonCard extends ConsumerWidget {
   final String pokemonURL;
@@ -27,47 +28,51 @@ class PokemonCard extends ConsumerWidget {
   }
 
   Widget _card(BuildContext context, bool isLoading, Pokemon? pokemon) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: MediaQuery.sizeOf(context).width * 0.03,
-        vertical: MediaQuery.sizeOf(context).height * 0.01,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.sizeOf(context).width * 0.03,
-        vertical: MediaQuery.sizeOf(context).height * 0.01,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Theme.of(context).primaryColor,
-        boxShadow: const [
-          BoxShadow(color: Colors.black26, spreadRadius: 2, blurRadius: 10),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                pokemon?.name?.toUpperCase() ?? "Pokemon",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+    return Skeletonizer(
+      enabled: isLoading,
+      ignoreContainers: true,
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.03,
+          vertical: MediaQuery.sizeOf(context).height * 0.01,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.03,
+          vertical: MediaQuery.sizeOf(context).height * 0.01,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Theme.of(context).primaryColor,
+          boxShadow: const [
+            BoxShadow(color: Colors.black26, spreadRadius: 2, blurRadius: 10),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  pokemon?.name?.toUpperCase() ?? "Pokemon",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                "#${pokemon?.id?.toString()}",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                Text(
+                  "#${pokemon?.id?.toString()}",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
