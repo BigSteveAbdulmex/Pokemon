@@ -28,4 +28,12 @@ class FavoritePokemonProvider extends StateNotifier<List<String>> {
   }
 
   Future<void> _setup() async {}
+
+  void addFavoritePokemon(String url) {
+    state = [...state, url];
+  }
+
+  void removeFavoritePokemon(String url) {
+    state = state = state.where((e) => e != url).toList();
+  }
 }
