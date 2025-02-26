@@ -50,8 +50,19 @@ class PokemonListTile extends ConsumerWidget {
         ),
         subtitle: Text("Has ${pokemon?.moves?.length.toString() ?? 0} moves"),
         trailing: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.favorite_border_outlined),
+          onPressed: () {
+            if (_favoritePokemons.contains(pokemonURL)) {
+              _favoritePokemonProvider.removeFavoritePokemon(pokemonURL);
+            } else {
+              _favoritePokemonProvider.addFavoritePokemon(pokemonURL);
+            }
+          },
+          icon: Icon(
+            _favoritePokemons.contains(pokemonURL)
+                ? Icons.favorite
+                : Icons.favorite_border,
+            color: Colors.red,
+          ),
         ),
       ),
     );
