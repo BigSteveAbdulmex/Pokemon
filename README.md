@@ -1,16 +1,58 @@
 # Pokemon App
 
-A new Flutter project.
+This Flutter application is a practice project that displays a list of Pokemon, their moves, and allows users to mark Pokemon as favorites.
+
+## Features
+
+* Displays a list of Pokemon with their images and names.
+* Shows detailed information about each Pokemon, including their moves.
+* Allows users to mark Pokemon as favorites.
+* Persists favorite Pokemon using `shared_preferences`.
+* Uses skeleton loading animations while data is loading.
+
+## Technologies Used
+
+* **Flutter**: Cross-platform mobile development framework.
+* **Flutter Riverpod:** State management.
+* **Dio:** HTTP client for API requests.
+* **Get_it:** Service locator for dependency injection.
+* **Google Fonts:** Custom font integration.
+* **Skeletonizer:** Skeleton loading animations.
+* **Shared Preferences:** Local data storage.
+
+## Packages
+
+* **`flutter_riverpod: ^2.6.1`**: Used for efficient state management, allowing for reactive data updates throughout the app.
+* **`google_fonts: ^6.2.1`**: Enables the use of custom fonts from the Google Fonts library for a more visually appealing UI.
+* **`dio: ^5.8.0+1`**: Handles network requests to the PokeAPI to fetch Pokemon data.
+* **`get_it: ^8.0.3`**: Implements a service locator pattern for easy access to dependencies across the application.
+* **`skeletonizer: ^1.4.3`**: Provides skeleton loading animations to enhance the user experience during data loading.
+* **`shared_preferences: ^2.5.2`**: Used for local storage to persist the user's favorite Pokemon selections.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1.  **Clone the repository:**
 
-A few resources to get you started if this is your first Flutter project:
+    ```bash
+    git clone [your-repository-url]
+    ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2.  **Navigate to the project directory:**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    ```bash
+    cd [your-project-directory]
+    ```
+
+3.  **Install dependencies:**
+
+    ```bash
+    flutter pub get
+    ```
+
+4.  **Run the application:**
+
+    ```bash
+    flutter run
+    ```
+
+## Project Structure
