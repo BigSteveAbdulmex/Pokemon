@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:pokemon/pages/home_page.dart';
+import 'package:pokemon/services/database_service.dart';
 import 'package:pokemon/services/http_service.dart';
 
 void main() async {
@@ -14,6 +15,7 @@ void main() async {
 
 Future<void> _setupServices() async {
   GetIt.instance.registerSingleton<HTTPService>(HTTPService());
+  GetIt.instance.registerSingleton<DatabaseService>(DatabaseService());
 }
 
 class MyApp extends StatelessWidget {
