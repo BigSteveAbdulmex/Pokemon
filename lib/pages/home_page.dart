@@ -96,6 +96,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   SizedBox(
                     height: MediaQuery.sizeOf(context).height * 0.48,
                     child: GridView.builder(
+                      scrollDirection: Axis.horizontal,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
