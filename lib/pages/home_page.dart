@@ -6,6 +6,7 @@ import 'package:pokemon/controllers/home_page_controller.dart';
 import 'package:pokemon/models/page_data.dart';
 import 'package:pokemon/models/pokemon.dart';
 import 'package:pokemon/providers/pokemon_data_providers.dart';
+import 'package:pokemon/widgets/pokemon_card.dart';
 import 'package:pokemon/widgets/pokemon_list_tile.dart';
 
 final homePageControllerProvider =
@@ -99,8 +100,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                           ),
+                      itemCount: _favoritePokemons.length,
                       itemBuilder: (context, index) {
-                        return Container();
+                        String pokemonURL = _favoritePokemons[index];
+                        return PokemonCard(pokemonURL: pokemonURL);
                       },
                     ),
                   ),
